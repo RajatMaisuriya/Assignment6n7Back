@@ -6,7 +6,7 @@ conn = pymysql.connect(
     host='Rajatkumar.mysql.pythonanywhere-services.com',
     user='Rajatkumar',
     password='Pa@1098',
-    database='Rajatkumar$todo'
+    database='todo'
 )
 
 # CREATE TABLE userstest(userID int(11) PRIMARY KEY NULL auto_increment, username varchar(30) NULL, email varchar(20) NULL, password varchar(200) NULL);
