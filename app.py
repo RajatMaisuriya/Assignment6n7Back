@@ -1,16 +1,18 @@
 import pymysql
-# import json
-# import updata
 from flask import Flask,request,jsonify,json
 from flask_cors import CORS
-import datetime
 
 conn = pymysql.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='assingment_todo'
+    host='Rajatkumar.mysql.pythonanywhere-services.com',
+    user='Rajatkumar',
+    password='Pa@1098',
+    database='Rajatkumar$assingment_todo'
 )
+
+# CREATE TABLE userstest(userID int(11) PRIMARY KEY NULL auto_increment, username varchar(30) NULL, email varchar(20) NULL, password varchar(200) NULL);
+# CREATE TABLE task(TaskID int(11) PRIMARY KEY NOT NULL auto_increment, userID int(11), taskTitle varchar(30), description varchar(100), dueDate date, status enum('Pending','In Progress','Completed'), CONSTRAINT FK_task FOREIGN KEY (userID)
+#     REFERENCES userstest(userID) );
+
 
 
 
@@ -33,7 +35,7 @@ def user_add():
 
     # print(email)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users (username,email,password) VALUES (%s,%s,%s)",(uname,email,password))
+    cursor.execute("INSERT INTO userstest (username,email,password) VALUES (%s,%s,%s)",(uname,email,password))
     conn.commit()
     return jsonify({"data":200})
     # conn.close()
@@ -44,7 +46,7 @@ def user_login():
     email=data.get('email')
     password=data.get('password')
     cursor = conn.cursor()
-    cursor.execute("SELECT userID,username FROM users WHERE email=%s AND password=%s",(email,password))
+    cursor.execute("SELECT userID,username FROM userstest WHERE email=%s AND password=%s",(email,password))
     user = cursor.fetchall()
     print(user)
     if user:
