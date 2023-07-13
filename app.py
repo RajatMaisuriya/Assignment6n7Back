@@ -59,7 +59,7 @@ def get_data():
     # return {"data":"data1"}
     # cursor = conn.cursor()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM task')
+    cursor.execute('SELECT * FROM userstest')
     data=cursor.fetchall()
     columns = [column[0] for column in cursor.description]
 
